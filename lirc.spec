@@ -23,7 +23,7 @@
 %endif
 Name:           lirc
 Version:        0.10.1
-Release:        1
+Release:        2
 Summary:        Tools for Infrared Receivers
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
@@ -38,6 +38,8 @@ Patch4:         harden_lircmd.service.patch
 # PATCH-FIX-UPSTREAM pyyaml-60-compatibility.patch sht#lirc#365 mcepl@suse.com
 # Makes the package compatible with PyYAML 6.0+
 Patch5:         pyyaml-60-compatibility.patch
+# PATCH-FIX-OPENSUSE lirc-autoconf-py310.patch, ran autoreconf for finding python 3.10
+Patch6:         lirc-autoconf-py310.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
@@ -368,6 +370,9 @@ usermod -a -G input lirc &> /dev/null || :
 %{_mandir}/man1/xmode2.1%{?ext_man}
 
 %changelog
+* Mon Sep 26 2022 Jingwiw <wangjingwei@iscas.ac.cn> - 0.10.1-2
+- PATCH-FIX-OPENSUSE lirc-autoconf-py310.patch, ran autoreconf for finding python 3.10
+
 * Fri Apr  3 2022 Jingwiw <ixoote@gmail.com> - 0.10.1-1
 - init from openSUSE
   author: openSUSE
